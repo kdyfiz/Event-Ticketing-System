@@ -1,0 +1,64 @@
+```json
+---
+description: Guides the AI to understand and generate code for an Event Management platform, focusing on event browsing, registration, ticket management, and event creation/management, with a user-friendly and efficient design.
+globs:
+alwaysApply: false
+---
+{
+  "name": "Event Management Platform",
+  "description": "Guides the AI to understand and generate code for an Event Management platform, focusing on event browsing, registration, ticket management, and event creation/management, with a user-friendly and efficient design.",
+  "triggers": [
+    {
+      "type": "file_extension",
+      "values": [".js", ".jsx", ".ts", ".tsx", ".py", ".java", ".html", ".css", ".sql"]
+    },
+    {
+      "type": "file_content",
+      "contains": ["event", "attendee", "registration", "ticket", "QR code", "organizer", "seat limit", "scan", "verify", "browse", "manage", "confirmation email"]
+    },
+    {
+      "type": "prompt_content",
+      "contains": ["event management", "event registration", "ticket scanning", "event creation", "manage events", "browse events", "digital ticket", "QR code scanning", "event organizer", "attendee registration"]
+    }
+  ],
+  "actions": [
+    {
+      "type": "set_context",
+      "context": {
+        "domain": "Event Management Platform",
+        "purpose": "Managing events, attendees, registrations, and tickets.",
+        "features": [
+          "Event Browsing and Filtering",
+          "Event Registration",
+          "Digital Ticket Generation (QR Code)",
+          "Ticket Downloading/Viewing",
+          "Event Creation and Management",
+          "Seat Limit Management",
+          "Ticket Scanning and Verification",
+          "Confirmation Email Sending",
+          "User Authentication (Organizer)",
+          "Reporting and Analytics (Event Attendance)"
+        ],
+        "target_audience": "Event Attendees and Event Organizers",
+        "ui_ux_guidelines": {
+          "design_system": "Use a clean and modern design system (e.g., Material Design, Bootstrap, or a custom one) that is appropriate for both web and mobile applications.",
+          "responsiveness": "Ensure the UI is fully responsive across different devices (desktops, tablets, mobile phones).",
+          "interactivity": "Incorporate interactive elements like modals, filters, search bars, and real-time updates to enhance user engagement.",
+          "data_visualization": "Use charts and graphs to visually represent event attendance and registration data.",
+          "accessibility": "Follow accessibility guidelines (WCAG) to ensure the platform is usable by people with disabilities.",
+          "user_flow": "Design intuitive user flows for event browsing, registration, ticket access, and event management.",
+          "performance": "Optimize the UI for fast loading times, especially for event listings and ticket generation.",
+          "feedback": "Provide clear and immediate feedback to user actions (e.g., loading indicators, success messages, error messages).",
+          "consistency": "Maintain consistent styling and behavior across all pages and components.",
+          "modern_aesthetics": "Utilize modern UI patterns, clean layouts, and a visually appealing color palette.  Prioritize clarity and ease of use.",
+          "qr_code_prominence": "Ensure the QR code is prominently displayed on the digital ticket and easily scannable."
+        }
+      }
+    },
+    {
+        "type":"add_instruction",
+        "instruction":"When generating UI code or suggestions, prioritize responsiveness, interactivity, and a modern aesthetic. Ensure the UI aligns with the specified design system and accessibility guidelines. Focus on creating intuitive user flows and providing clear feedback to user actions. Optimize for performance and maintain consistency across the platform. When generating backend code, focus on security, efficiency, and scalability, especially for ticket generation, validation, and event capacity management.  Pay special attention to QR code generation and scanning accuracy."
+    }
+  ]
+}
+```

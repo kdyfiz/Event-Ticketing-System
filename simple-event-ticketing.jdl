@@ -1,0 +1,47 @@
+```jdl
+entity Event {
+  name String required maxlength(255),
+  description String,
+  date Instant required,
+  location String required maxlength(255),
+  seatLimit Integer min(1),
+  availableSeats Integer min(0)
+}
+
+entity Registration {
+  registrationDate Instant required,
+  email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+}
+
+entity Ticket {
+  qrCode String required,
+  issueDate Instant required
+}
+
+enum EventCategory {
+  CONFERENCE,
+  WORKSHOP,
+  SEMINAR,
+  MEETUP
+}
+
+relationship OneToMany {
+  Event{registration} to Registration{event required}
+}
+
+relationship OneToOne {
+  Registration{ticket} to Ticket{registration required}
+}
+
+relationship ManyToOne {
+  Registration{attendee(login)} to User with builtInEntity
+}
+
+relationship ManyToOne {
+    Event{organizer(login)} to User with builtInEntity
+}
+
+paginate Event, Registration with pagination
+service Event, Registration, Ticket with serviceImpl
+dto Event, Registration, Ticket with mapstruct
+```
